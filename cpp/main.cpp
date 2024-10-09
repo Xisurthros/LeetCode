@@ -8,10 +8,12 @@ class LeetCodeProblems {
 		}
 
 		std::vector<int> twoSum(std::vector<int>& nums, int target) {
+			// Get the length of the vector
 			auto size_of_nums = nums.size();
-			std::cout << "size_of_nums: " << size_of_nums << std::endl;
 
-			for (int x = 0; x <= size_of_nums; x++) {
+			for (int x = 0; x <= size_of_nums - 1; x++) {
+				// Start at the beginning of the list and get the current val - target to check
+				// if the remaining number is in the vector
 				int required_number = target - nums[x];
 				std::cout << "Target: " << target << " Current Number:  " << nums[x] << " Required Number: " << required_number << std::endl;
 				if (nums[x + 1] == required_number) {
@@ -27,6 +29,8 @@ class LeetCodeProblems {
 };
 
 class LeetCodeSolutions : public LeetCodeProblems {
+	// Testing functions based on given paramaters in LeetCode
+
 	public:
 		void run_twoSum() {
 			
