@@ -1,12 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <map>
 #include <unordered_map>
+
 
 class LeetCodeProblems {
 public:
-	void printBreakLine() {
-		std::cout << "=========================================================================" << std::endl;
-	}
 
 	std::vector<int> twoSum(std::vector<int>& nums, int target) {
 		/**
@@ -27,7 +26,6 @@ public:
 
 			// If the needed number exists in the map, return the pair of indices
 			if (passed_nums.find(needed_num) != passed_nums.end()) {
-				std::cout << '{' << passed_nums[needed_num] << ',' << x << '}' << std::endl;
 				return {passed_nums[needed_num], x};
 			}
 
@@ -41,24 +39,39 @@ public:
 };
 
 class LeetCodeSolutions : public LeetCodeProblems {
-	// Testing functions based on given paramaters in LeetCode
+public:
+	void run_twoSum() {
+		/**
+		* Runs multiple test cases for the twoSum function and verifies the results.
+		*/
 
-	public:
-		void run_twoSum() {
-			
-			std::vector<int> nums_1 = {2, 7, 11, 15};
-			int target_1 = 9;
+		// Define test cases: each contains nums vector, target sum, and expected result
+		std::vector<std::tuple<std::vector<int>, int, std::vector<int>>> test_cases = {
+			{ { 2 , 7 , 11 , 15 }, 9, { 0 , 1 } },
+			{ { 3 , 2 , 4 }, 6, { 1 , 2 } },
+			{ { 3 , 3 }, 6 , { 0 , 1 } } 
+		};
 
-			std::vector<int> nums_2 = {3, 2, 4};
-			int target_2 = 6;
+		// Get the number of test cases
+		int num_of_tests = test_cases.size();
 
-			std::vector<int> nums_3 = {3, 3};
-			int target_3 = 6;
-			
-			twoSum(nums_1, target_1);
-			twoSum(nums_2, target_2);
-			twoSum(nums_3, target_3);
+		// Iterate through each test case, checking if the output matches the expected result
+		for (int x = 0; x < num_of_tests; x++) {
+
+			// Unpack the current test case into nums, target, and expected
+			auto [nums, target, expected] = test_cases[x];
+
+			// Run the twoSum function and store the output
+			std::vector<int> output = twoSum(nums, target);
+
+			// Compare output with expected result
+			if (output != expected) {
+				std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+				continue;
+			}
+			std::cout << "MATCH" << std::endl;
 		}
+	}
 };
 
 int main(){
