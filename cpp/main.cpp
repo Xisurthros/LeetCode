@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 class LeetCodeProblems {
 	public:
@@ -8,23 +9,34 @@ class LeetCodeProblems {
 		}
 
 		std::vector<int> twoSum(std::vector<int>& nums, int target) {
-			// Get the length of the vector
+			/**
+			* Returns indices of two numbers that add up to the target
+			*
+			* @param nums - Vector of integers
+			* @param target - Target sum
+			* @return Vector with two indices, or empty if no pair is found
+			*/
+
+			// Map to store seen numbers and their indices
+			std::unordered_map<int, int> passed_nums = {};
 			auto size_of_nums = nums.size();
 
-			for (int x = 0; x <= size_of_nums - 1; x++) {
-				// Start at the beginning of the list and get the current val - target to check
-				// if the remaining number is in the vector
-				int required_number = target - nums[x];
-				std::cout << "Target: " << target << " Current Number:  " << nums[x] << " Required Number: " << required_number << std::endl;
-				if (nums[x + 1] == required_number) {
-					std::cout << nums[x+1] << std::endl;
-					std::cout << "FOUND!" << std::endl;
-					break;
+			// Iterate through the vector to find the pair
+			for (int x = 0; x <= size_of_nums; x++) {
+				int needed_num = target - nums[x];
+
+				// If the needed number exists in the map, return the pair of indices
+				if (passed_nums.find(needed_num) != passed_nums.end()) {
+					std::cout << '{' << passed_nums[needed_num] << ',' << x << '}' << std::endl;
+					return {passed_nums[needed_num], x};
 				}
+
+				// If the needed number exists in the map, return the pair of indices
+				passed_nums[nums[x]] = x;
 			}
 
-			printBreakLine();
-			return nums;
+			// Return empty if no pair found
+			return {};
 		}
 };
 
