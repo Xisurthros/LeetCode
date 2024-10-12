@@ -1,69 +1,108 @@
 #include <iostream>
 #include <vector>
+#include <map>
 #include <unordered_map>
+#include <string>
+
 
 class LeetCodeProblems {
-	public:
-		void printBreakLine() {
-			std::cout << "=========================================================================" << std::endl;
-		}
+public:
 
-		std::vector<int> twoSum(std::vector<int>& nums, int target) {
-			/**
-			* Returns indices of two numbers that add up to the target
-			*
-			* @param nums - Vector of integers
-			* @param target - Target sum
-			* @return Vector with two indices, or empty if no pair is found
-			*/
+	std::vector<int> twoSum(std::vector<int>& nums, int target) {
 
-			// Map to store seen numbers and their indices
-			std::unordered_map<int, int> passed_nums = {};
-			auto size_of_nums = nums.size();
+		std::unordered_map<int, int> passed_nums = {};
+		auto size_of_nums = nums.size();
 
-			// Iterate through the vector to find the pair
-			for (int x = 0; x <= size_of_nums; x++) {
-				int needed_num = target - nums[x];
+		for (int x = 0; x <= size_of_nums; x++) {
+			int needed_num = target - nums[x];
 
-				// If the needed number exists in the map, return the pair of indices
-				if (passed_nums.find(needed_num) != passed_nums.end()) {
-					std::cout << '{' << passed_nums[needed_num] << ',' << x << '}' << std::endl;
-					return {passed_nums[needed_num], x};
-				}
-
-				// If the needed number exists in the map, return the pair of indices
-				passed_nums[nums[x]] = x;
+			if (passed_nums.find(needed_num) != passed_nums.end()) {
+				return {passed_nums[needed_num], x};
 			}
 
-			// Return empty if no pair found
-			return {};
+			passed_nums[nums[x]] = x;
 		}
+
+		return {};
+	}
+
+	int romanToInt(std::string s) {
+		std::map<char, int> roman_numerals = {
+			{ 'M' , 1000 }, { 'D' , 500 },
+			{ 'C' , 100 }, { 'L' , 50 },
+			{ 'X' , 10 }, { 'V' , 5 },
+			{ 'I', 1 }
+		};
+
+		int total = 0;
+
+		for (int x = 0; x < s.length() - 1; x++) {
+			int z = roman_numerals[s[x]];
+			int y = roman_numerals[s[x + 1]];
+
+			if (z < y) {
+				total -= z;
+				continue;
+			}
+			total += z;
+		}
+		total += roman_numerals[s.back()];
+
+		return total;
+	}
 };
 
 class LeetCodeSolutions : public LeetCodeProblems {
-	// Testing functions based on given paramaters in LeetCode
+public:
+	void run_twoSum() {
+		std::vector<std::tuple<std::vector<int>, int, std::vector<int>>> test_cases = {
+			{ { 2 , 7 , 11 , 15 }, 9, { 0 , 1 } },
+			{ { 3 , 2 , 4 }, 6, { 1 , 2 } },
+			{ { 3 , 3 }, 6 , { 0 , 1 } } 
+		};
 
-	public:
-		void run_twoSum() {
-			
-			std::vector<int> nums_1 = {2, 7, 11, 15};
-			int target_1 = 9;
+		int num_of_tests = test_cases.size();
 
-			std::vector<int> nums_2 = {3, 2, 4};
-			int target_2 = 6;
+		for (int x = 0; x < num_of_tests; x++) {
 
-			std::vector<int> nums_3 = {3, 3};
-			int target_3 = 6;
-			
-			twoSum(nums_1, target_1);
-			twoSum(nums_2, target_2);
-			twoSum(nums_3, target_3);
+			auto [nums, target, expected] = test_cases[x];
+			std::vector<int> output = twoSum(nums, target);
+
+			if (output != expected) {
+				std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+				continue;
+			}
+			std::cout << "MATCH" << std::endl;
 		}
+	}
+
+	void run_romanToInt() {
+
+		std::vector<std::tuple<std::string, int>> test_cases = {
+			{ "III" , 3 },
+			{ "LVIII" , 58 },
+			{ "MCMXCIV" , 1994 } 
+		};
+
+		int num_of_tests = test_cases.size();
+
+		for (int x = 0; x < num_of_tests; x++) {
+			auto [s, expected] = test_cases[x];
+			int output = romanToInt(s);
+
+			if (output != expected) {
+				std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+				continue;
+			}
+			std::cout << "MATCH" << std::endl;
+		}
+
+	}
 };
 
 int main(){
 
 	LeetCodeSolutions solutions;
-	solutions.run_twoSum();
+	solutions.run_romanToInt();
 
 }
