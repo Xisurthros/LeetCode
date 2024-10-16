@@ -3,6 +3,7 @@
 #include <map>
 #include <unordered_map>
 #include <string>
+#include <unordered_set>
 
 
 class LeetCodeProblems {
@@ -67,6 +68,16 @@ public:
 		}
 
 		return {};
+	}
+
+	bool containsDuplicate(std::vector<int>& nums) {
+		std::unordered_set<int> unique_numbers;
+		for (int num : nums) {
+			if (!unique_numbers.insert(num).second) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 };
@@ -139,11 +150,30 @@ public:
 			std::cout << "MATCH" << std::endl;
 		}
 	}
+
+	void run_containsDuplicate() {
+		std::vector<std::tuple<std::vector<int>, bool>> test_cases = {
+			{ { 1 , 2 , 3 , 1 } , true },
+			{ { 1 , 2 , 3 , 4 } , false },
+			{ { 1 , 1 , 1 , 3 , 3 , 4 , 3 , 2 , 4 , 2 } , true } 
+		};
+
+		int num_of_tests = test_cases.size();
+
+		for (int x = 0; x < num_of_tests; x++) {
+			auto [nums, expected] = test_cases[x];
+			if (containsDuplicate(nums) != expected) {
+				std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+				continue;
+			}
+			std::cout << "MATCH" << std::endl;
+		}
+	}
 };
 
 int main(){
 
 	LeetCodeSolutions solutions;
-	solutions.run_twoSumII();
+	solutions.run_containsDuplicate();
 
 }
