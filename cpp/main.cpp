@@ -80,6 +80,26 @@ public:
 		return false;
 	}
 
+	bool isAnagram(std::string s, std::string t) {
+		if (s.size() != t.size()) {
+			return false;
+		}
+
+		std::unordered_map<char, int> character_count;
+
+		for (int x = 0; x < s.size(); x++) {
+			character_count[s[x]]++;
+			character_count[t[x]]--;
+		}
+
+		for (auto count : character_count) {
+			if (count.second != 0) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 };
 
 class LeetCodeSolutions : public LeetCodeProblems {
@@ -162,18 +182,41 @@ public:
 
 		for (int x = 0; x < num_of_tests; x++) {
 			auto [nums, expected] = test_cases[x];
-			if (containsDuplicate(nums) != expected) {
+			bool output = containsDuplicate(nums);
+
+			if (output != expected) {
 				std::cout << "ERROR: unexpected results non-matching!" << std::endl;
 				continue;
 			}
 			std::cout << "MATCH" << std::endl;
 		}
 	}
+
+	void run_isAnagram() {	
+		std::vector<std::tuple<std::pair<std::string, std::string>, bool>> test_cases = {
+			{ { "anagram" , "nagaram" } , true },
+			{ { "rat" , "car" } , false }
+		};
+
+		int num_of_tests = test_cases.size();
+
+		for (int x = 0; x < num_of_tests; x++) {
+			auto [anagrams, expected] = test_cases[x];
+			bool output = isAnagram(anagrams.first, anagrams.second);
+
+			if (output != expected) {
+				std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+				continue;
+			}
+			std::cout << "MATCH" << std::endl;
+		}
+	}
+
 };
 
 int main(){
 
 	LeetCodeSolutions solutions;
-	solutions.run_containsDuplicate();
+	solutions.run_isAnagram();
 
 }
