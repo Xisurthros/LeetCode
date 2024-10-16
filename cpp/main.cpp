@@ -50,6 +50,25 @@ public:
 
 		return total;
 	}
+
+	std::vector<int> twoSumII(std::vector<int>& nums, int target) {
+	        std::unordered_map<int, int> seen_numbers = {};
+		auto length_of_numbers_array = nums.size();
+
+		for (int x = 0; x < length_of_numbers_array; x++) {
+		    int current_number = nums[x];
+		    int needed_number = target - current_number;
+
+		    if (seen_numbers.find(needed_number) != seen_numbers.end()) {
+			return {seen_numbers[needed_number] + 1, x + 1};
+		    }
+
+		    seen_numbers[current_number] = x;
+		}
+
+		return {};
+	}
+
 };
 
 class LeetCodeSolutions : public LeetCodeProblems {
@@ -98,11 +117,33 @@ public:
 		}
 
 	}
+
+	void run_twoSumII() {
+		std::vector<std::tuple<std::vector<int>, int, std::vector<int>>> test_cases = {
+			{ { 2 , 7 , 11 , 15 } , 9 , { 1 , 2 } } ,
+			{ { 2 , 3 , 4 }, 6, { 1 , 3 } },
+			{ { -1 , 0 }, -1, { 1 , 2 } }
+		};
+
+		int num_of_tests = test_cases.size();
+
+		for (int x = 0; x < num_of_tests; x++) {
+
+			auto [nums, target, expected] = test_cases[x];
+			std::vector<int> output = twoSumII(nums, target);
+
+			if (output != expected) {
+				std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+				continue;
+			}
+			std::cout << "MATCH" << std::endl;
+		}
+	}
 };
 
 int main(){
 
 	LeetCodeSolutions solutions;
-	solutions.run_romanToInt();
+	solutions.run_twoSumII();
 
 }
