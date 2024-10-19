@@ -2,6 +2,6 @@
 
 int main() {
     LeetCodeSolutions solutions;
-    solutions.run_finalValueAfterOperations();
+    solutions.run_getConcatenation();
     return 0;
 }

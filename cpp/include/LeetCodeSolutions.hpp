@@ -17,6 +17,7 @@ public:
     void run_scoreOfString();
     void run_convertTemperature();
     void run_finalValueAfterOperations();
+    void run_getConcatenation();
 };
 
 #endif

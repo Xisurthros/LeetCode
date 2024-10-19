@@ -101,3 +101,8 @@ int LeetCodeProblems::finalValueAfterOperations(std::vector<std::string>& operat
     }
     return x;
 }
+
+std::vector<int> LeetCodeProblems::getConcatenation(std::vector<int>& nums) {
+    nums.insert(nums.end(), nums.begin(), nums.end());
+    return nums;
+}

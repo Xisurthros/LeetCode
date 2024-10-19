@@ -17,6 +17,7 @@ public:
     int scoreOfString(std::string s);
     std::vector<double> convertTemperature(double celsius);
     int finalValueAfterOperations(std::vector<std::string>& operations);
+    std::vector<int> getConcatenation(std::vector<int>& nums);
 };
 
 #endif

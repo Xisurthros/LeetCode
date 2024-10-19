@@ -144,3 +144,18 @@ void LeetCodeSolutions::run_finalValueAfterOperations() {
         }
     }
 }
+
+void LeetCodeSolutions::run_getConcatenation() {
+    std::vector<std::pair<std::vector<int>, std::vector<int>>> test_cases = {
+        { {1, 2, 1} , {1, 2, 1, 1, 2, 1} } ,
+        { {1, 3, 2, 1}, {1, 3, 2, 1, 1, 3, 2, 1} },
+    };
+    for (auto& [arrays, expected] : test_cases) {
+         std::vector<int> output = getConcatenation(arrays);
+        if (output != expected) {
+            std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+        } else {
+            std::cout << "MATCH" << std::endl;
+        }
+    }
+}
