@@ -77,3 +77,11 @@ double LeetCodeProblems::nthPersonGetsNthSeat(int n) {
     }
         return 1.0000;
 }
+
+int LeetCodeProblems::scoreOfString(std::string s) {
+    int total = 0;
+    for (int x = 0; x < s.size() -1; x++) {
+         total += abs(s[x] - s[x+1]);
+    }
+    return total;
+}

@@ -84,11 +84,26 @@ void LeetCodeSolutions::run_isAnagram() {
 
 void LeetCodeSolutions::run_nthPersonGetsNthSeat() {
     std::vector<std::pair<int, double>> test_cases = {
-        { 1 , 1.0 } , { 2 , 0.5 }
+        {1, 1.0}, {2, 0.5}
     };
 
     for (const auto& [numberOfPeople, expected] : test_cases) {
         double output = nthPersonGetsNthSeat(numberOfPeople);
+        if (output != expected) {
+            std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+        } else {
+            std::cout << "MATCH" << std::endl;
+        }
+    }
+}
+
+void LeetCodeSolutions::run_scoreOfString() {
+    std::vector<std::pair<std::string, int>> test_cases = {
+        {"hello", 13}, {"zaz", 50}
+    };
+
+    for (const auto& [inputString, expected] : test_cases) {
+        int output = scoreOfString(inputString);
         if (output != expected) {
             std::cout << "ERROR: unexpected results non-matching!" << std::endl;
         } else {

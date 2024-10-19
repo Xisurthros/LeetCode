@@ -2,6 +2,6 @@
 
 int main() {
     LeetCodeSolutions solutions;
-    solutions.run_nthPersonGetsNthSeat();
+    solutions.run_scoreOfString();
     return 0;
 }

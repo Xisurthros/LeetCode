@@ -14,6 +14,7 @@ public:
     bool containsDuplicate(const std::vector<int>& nums);
     bool isAnagram(const std::string& s, const std::string& t);
     double nthPersonGetsNthSeat(int n);
+    int scoreOfString(std::string s);
 };
 
 #endif

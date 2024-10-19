@@ -14,6 +14,7 @@ public:
     void run_containsDuplicate();
     void run_isAnagram();
     void run_nthPersonGetsNthSeat();
+    void run_scoreOfString();
 };
 
 #endif
