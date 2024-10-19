@@ -16,6 +16,7 @@ public:
     double nthPersonGetsNthSeat(int n);
     int scoreOfString(std::string s);
     std::vector<double> convertTemperature(double celsius);
+    int finalValueAfterOperations(std::vector<std::string>& operations);
 };
 
 #endif

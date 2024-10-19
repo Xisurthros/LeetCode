@@ -119,7 +119,7 @@ void LeetCodeSolutions::run_convertTemperature() {
     };
 
     for (const auto& [inputString, expected] : test_cases) {
-         std::vector<double> output = convertTemperature(inputString);
+        std::vector<double> output = convertTemperature(inputString);
         if (output != expected) {
             std::cout << "ERROR: unexpected results non-matching!" << std::endl;
         } else {
@@ -128,3 +128,19 @@ void LeetCodeSolutions::run_convertTemperature() {
     }
 }
 
+void LeetCodeSolutions::run_finalValueAfterOperations() {
+    std::vector<std::pair<std::vector<std::string>, int>> test_cases {
+        { {"--X", "X++", "X++"}, 1 },
+        { {"++X", "++X", "X++"}, 3 },
+        { { "X++", "++X", "--X", "X--"}, 0}
+    };
+
+    for (auto& [operations, expected] : test_cases) {
+        int output = finalValueAfterOperations(operations);
+        if (output != expected) {
+            std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+        } else {
+            std::cout << "MATCH" << std::endl;
+        }
+    }
+}

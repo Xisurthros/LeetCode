@@ -16,6 +16,7 @@ public:
     void run_nthPersonGetsNthSeat();
     void run_scoreOfString();
     void run_convertTemperature();
+    void run_finalValueAfterOperations();
 };
 
 #endif

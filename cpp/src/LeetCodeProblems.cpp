@@ -89,3 +89,15 @@ int LeetCodeProblems::scoreOfString(std::string s) {
 std::vector<double> LeetCodeProblems::convertTemperature(double celsius) {
     return {celsius + 273.15, celsius * 1.80 + 32.00};
 }
+
+int LeetCodeProblems::finalValueAfterOperations(std::vector<std::string>& operations) {
+    int x = 0;
+    for (int i = 0; i < operations.size(); i++) {
+        if (operations[i][1] == '+') {
+         x++;
+         continue;
+        }
+        x--;
+    }
+    return x;
+}

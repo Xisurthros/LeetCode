@@ -2,6 +2,6 @@
 
 int main() {
     LeetCodeSolutions solutions;
-    solutions.run_convertTemperature();
+    solutions.run_finalValueAfterOperations();
     return 0;
 }
