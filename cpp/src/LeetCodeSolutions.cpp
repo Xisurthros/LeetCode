@@ -111,3 +111,20 @@ void LeetCodeSolutions::run_scoreOfString() {
         }
     }
 }
+
+void LeetCodeSolutions::run_convertTemperature() {
+    std::vector<std::pair<double, std::vector<double>>> test_cases {
+        {36.50, {309.65000, 97.70000} },
+        {122.11, {395.26000,251.79800} }
+    };
+
+    for (const auto& [inputString, expected] : test_cases) {
+         std::vector<double> output = convertTemperature(inputString);
+        if (output != expected) {
+            std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+        } else {
+            std::cout << "MATCH" << std::endl;
+        }
+    }
+}
+

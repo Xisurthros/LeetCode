@@ -2,6 +2,6 @@
 
 int main() {
     LeetCodeSolutions solutions;
-    solutions.run_scoreOfString();
+    solutions.run_convertTemperature();
     return 0;
 }

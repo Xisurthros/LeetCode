@@ -15,6 +15,7 @@ public:
     void run_isAnagram();
     void run_nthPersonGetsNthSeat();
     void run_scoreOfString();
+    void run_convertTemperature();
 };
 
 #endif

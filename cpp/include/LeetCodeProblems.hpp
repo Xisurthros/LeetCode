@@ -15,6 +15,7 @@ public:
     bool isAnagram(const std::string& s, const std::string& t);
     double nthPersonGetsNthSeat(int n);
     int scoreOfString(std::string s);
+    std::vector<double> convertTemperature(double celsius);
 };
 
 #endif
