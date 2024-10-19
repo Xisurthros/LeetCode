@@ -54,7 +54,7 @@ bool LeetCodeProblems::containsDuplicate(const std::vector<int>& nums) {
     return false;
 }
 
-bool LeetCodeProblems::isAnagram(const std::string& s, const std::string& t) {  // Updated to const references
+bool LeetCodeProblems::isAnagram(const std::string& s, const std::string& t) {
     if (s.size() != t.size()) {
         return false;
     }
@@ -69,4 +69,11 @@ bool LeetCodeProblems::isAnagram(const std::string& s, const std::string& t) {  
         }
     }
     return true;
+}
+
+double LeetCodeProblems::nthPersonGetsNthSeat(int n) {
+    if (n != 1) {
+        return 0.5000;
+    }
+        return 1.0000;
 }

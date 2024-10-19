@@ -8,13 +8,12 @@
 
 class LeetCodeProblems {
 public:
-    std::vector<int> twoSum(const std::vector<int>& nums, int target);  // Updated to const
-    int romanToInt(const std::string& s);  // Updated to const reference   int romanToInt(std::string s);
-    std::vector<int> twoSumII(const std::vector<int>& nums, int target);  // Updated to const
-    bool containsDuplicate(const std::vector<int>& nums);  // Updated to const
+    std::vector<int> twoSum(const std::vector<int>& nums, int target);
+    int romanToInt(const std::string& s);
+    std::vector<int> twoSumII(const std::vector<int>& nums, int target);
+    bool containsDuplicate(const std::vector<int>& nums);
     bool isAnagram(const std::string& s, const std::string& t);
+    double nthPersonGetsNthSeat(int n);
 };
 
-#endif // LEETCODEPROBLEMS_HPP
-
-
+#endif

@@ -13,7 +13,7 @@ public:
     void run_twoSumII();
     void run_containsDuplicate();
     void run_isAnagram();
+    void run_nthPersonGetsNthSeat();
 };
 
-#endif // LEETCODESOLUTIONS_HPP
-
+#endif
