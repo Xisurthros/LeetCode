@@ -162,7 +162,7 @@ void LeetCodeSolutions::run_getConcatenation() {
 
 void LeetCodeSolutions::run_groupAnagrams() {
     std::vector<std::pair<std::vector<std::string>, std::vector<std::vector<std::string>>>> test_cases = {
-        { {"eat", "tea", "tan", "ate", "nat", "bat"}, { {"bat"}, {"nat", "tan"}, {"ate", "eat", "tea"} } },
+        { {"eat", "tea", "tan", "ate", "nat", "bat"}, { {"bat"}, {"tan", "nat"}, {"eat", "tea", "ate"} } },
         { {""}, { {""} } },
         { {"a"}, { {"a"} } }
     };
