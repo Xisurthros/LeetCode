@@ -151,7 +151,24 @@ void LeetCodeSolutions::run_getConcatenation() {
         { {1, 3, 2, 1}, {1, 3, 2, 1, 1, 3, 2, 1} },
     };
     for (auto& [arrays, expected] : test_cases) {
-         std::vector<int> output = getConcatenation(arrays);
+        std::vector<int> output = getConcatenation(arrays);
+        if (output != expected) {
+            std::cout << "ERROR: unexpected results non-matching!" << std::endl;
+        } else {
+            std::cout << "MATCH" << std::endl;
+        }
+    }
+}
+
+void LeetCodeSolutions::run_groupAnagrams() {
+    std::vector<std::pair<std::vector<std::string>, std::vector<std::vector<std::string>>>> test_cases = {
+        { {"eat", "tea", "tan", "ate", "nat", "bat"}, { {"bat"}, {"nat", "tan"}, {"ate", "eat", "tea"} } },
+        { {""}, { {""} } },
+        { {"a"}, { {"a"} } }
+    };
+
+    for (auto& [input_strings, expected] : test_cases) {
+        std::vector<std::vector<std::string>> output = groupAnagrams(input_strings);
         if (output != expected) {
             std::cout << "ERROR: unexpected results non-matching!" << std::endl;
         } else {

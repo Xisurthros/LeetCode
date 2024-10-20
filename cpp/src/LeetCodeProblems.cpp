@@ -1,10 +1,11 @@
 #include "LeetCodeProblems.hpp"
 #include <map>
+#include <unordered_map>
+#include <algorithm>
 
 std::vector<int> LeetCodeProblems::twoSum(const std::vector<int>& nums, int target) {
     std::unordered_map<int, int> passed_nums;
     auto size_of_nums = nums.size();
-
     for (int x = 0; x < size_of_nums; x++) {
         int needed_num = target - nums[x];
         if (passed_nums.find(needed_num) != passed_nums.end()) {
@@ -15,7 +16,7 @@ std::vector<int> LeetCodeProblems::twoSum(const std::vector<int>& nums, int targ
     return {};
 }
 
-int LeetCodeProblems::romanToInt(const std::string& s) {  // Updated to const reference
+int LeetCodeProblems::romanToInt(const std::string& s) {
     std::map<char, int> roman_numerals = {
         {'M', 1000}, {'D', 500}, {'C', 100}, {'L', 50},
         {'X', 10}, {'V', 5}, {'I', 1}
@@ -105,4 +106,18 @@ int LeetCodeProblems::finalValueAfterOperations(std::vector<std::string>& operat
 std::vector<int> LeetCodeProblems::getConcatenation(std::vector<int>& nums) {
     nums.insert(nums.end(), nums.begin(), nums.end());
     return nums;
+}
+
+std::vector<std::vector<std::string>> LeetCodeProblems::groupAnagrams(std::vector<std::string>& strs) {
+        std::unordered_map<std::string, std::vector<std::string>> separated_strings;
+        for (const auto& pre_sorted_string : strs) {
+            std::string sorted_string = pre_sorted_string;
+            std::sort(sorted_string.begin(), sorted_string.end());
+            separated_strings[sorted_string].push_back(pre_sorted_string);
+        }
+        std::vector<std::vector<std::string>> results;
+        for (const auto& paried_strings : separated_strings) {
+            results.push_back(paried_strings.second);
+        }
+        return results;
 }

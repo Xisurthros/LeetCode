@@ -18,6 +18,7 @@ public:
     std::vector<double> convertTemperature(double celsius);
     int finalValueAfterOperations(std::vector<std::string>& operations);
     std::vector<int> getConcatenation(std::vector<int>& nums);
+    std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs);
 };
 
 #endif

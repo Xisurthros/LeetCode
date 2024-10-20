@@ -18,6 +18,7 @@ public:
     void run_convertTemperature();
     void run_finalValueAfterOperations();
     void run_getConcatenation();
+    void run_groupAnagrams();
 };
 
 #endif
